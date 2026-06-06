@@ -4,12 +4,16 @@
     <title>Quotation Comparison</title>
 </head>
 <body>
-     <nav><div>
-    <a href="/dashboard">Dashboard</a> |
-    <a href="/vendors">Vendors</a> |
-    <a href="/rfqs">RFQs</a> |
-    <a href="/quotations">Quotations</a> |
-    <a href="/approvals">Approvals</a>
+      <nav><div style="padding:10px;background:#f0f0f0">
+
+<a href="/dashboard">Dashboard</a> |
+
+<a href="/vendors">Vendors</a> |
+
+<a href="/rfqs">RFQs</a> |
+
+<a href="/quotations">Quotations</a>
+
 </div>
 
 <hr></nav>
@@ -51,12 +55,19 @@
 <td>{{ q.delivery_days }}</td>
 
 <td>{{ q.status }}</td>
+<td>
+    <a href="/approve/{{ q.id }}">
+        Approve
+    </a>
+</td>
 
 </tr>
 
 {% endfor %}
 
 </table>
+
+
 <h2>
 Recommended Vendor:
 {{ vendor_map[recommended.vendor_id] }}

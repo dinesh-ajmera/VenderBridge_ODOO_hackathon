@@ -3,13 +3,16 @@
 <head>
     <title>RFQs</title>
 </head>
-<body>
- <nav><div>
-    <a href="/dashboard">Dashboard</a> |
-    <a href="/vendors">Vendors</a> |
-    <a href="/rfqs">RFQs</a> |
-    <a href="/quotations">Quotations</a> |
-    <a href="/approvals">Approvals</a>
+<body> <nav><div style="padding:10px;background:#f0f0f0">
+
+<a href="/dashboard">Dashboard</a> |
+
+<a href="/vendors">Vendors</a> |
+
+<a href="/rfqs">RFQs</a> |
+
+<a href="/quotations">Quotations</a>
+
 </div>
 
 <hr></nav>
@@ -23,6 +26,8 @@
     <th>Quantity</th>
     <th>Deadline</th>
     <th>Status</th>
+    <th>Submit Quote</th>
+    <th>Compare Quotes</th>
 </tr>
 
 {% for rfq in rfqs %}
@@ -33,15 +38,18 @@
     <td>{{ rfq.quantity }}</td>
     <td>{{ rfq.deadline }}</td>
     <td>{{ rfq.status }}</td>
-</tr>
-
-<a href="/submit_quotation/{{ rfq.id }}">
+    <td><a href="/submit_quotation/{{ rfq.id }}">
     Submit Quote
 </a>
-
-<a href="/compare/{{ rfq.id }}">
+</td>
+    <td><a href="/compare/{{ rfq.id }}">
     Compare Quotes
-</a>
+</a></td>
+
+
+
+
+</tr>
 
 {% endfor %}
 
