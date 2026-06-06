@@ -20,20 +20,24 @@
     <label>Price</label>
     <br>
     <input type="number"
-           name="price">
+           name="price"
+           min="0"
+           required>
 
     <br><br>
 
     <label>Delivery Days</label>
     <br>
     <input type="number"
-           name="delivery_days">
+           name="delivery_days"
+           required
+           min="1">
 
     <br><br>
 
     <label>Notes</label>
     <br>
-    <textarea name="notes"></textarea>
+    <textarea name="notes" required></textarea>
 
     <br><br>
     <select name="vendor_id">

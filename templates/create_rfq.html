@@ -20,25 +20,27 @@
 
     <input type="text"
            name="title"
-           placeholder="RFQ Title">
+           placeholder="RFQ Title" required>
 
     <br><br>
 
     <textarea
         name="description"
-        placeholder="Description">
+        placeholder="Description" required>
     </textarea>
 
     <br><br>
 
     <input type="number"
            name="quantity"
-           placeholder="Quantity">
+           min="1"
+           placeholder="Quantity" required > 
 
     <br><br>
 
     <input type="date"
-           name="deadline">
+           name="deadline"
+           required>
 
     <br><br>
 
