@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Quotation</title>
+</head>
+<body>
+ <nav><div>
+    <a href="/dashboard">Dashboard</a> |
+    <a href="/vendors">Vendors</a> |
+    <a href="/rfqs">RFQs</a> |
+    <a href="/quotations">Quotations</a> |
+    <a href="/approvals">Approvals</a>
+</div>
+
+<hr></nav>
+<h1>Submit Quotation</h1>
+
+<form method="POST">
+
+    <label>Price</label>
+    <br>
+    <input type="number"
+           name="price">
+
+    <br><br>
+
+    <label>Delivery Days</label>
+    <br>
+    <input type="number"
+           name="delivery_days">
+
+    <br><br>
+
+    <label>Notes</label>
+    <br>
+    <textarea name="notes"></textarea>
+
+    <br><br>
+    <select name="vendor_id">
+
+{% for vendor in vendors %}
+
+<option value="{{ vendor.id }}">
+    {{ vendor.company_name }}
+</option>
+
+{% endfor %}
+
+</select>
+<br><br>
+
+    <button type="submit">
+        Submit Quotation
+    </button>
+
+</form>
+
+</body>
+</html>

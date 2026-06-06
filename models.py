@@ -66,3 +66,29 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(200))
 
     role = db.Column(db.String(50))
+
+
+class Approval(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+    rfq_id = db.Column(db.Integer)
+
+    quotation_id = db.Column(db.Integer)
+
+    status = db.Column(db.String(50))
+
+    remarks = db.Column(db.String(200))
+
+class PurchaseOrder(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    po_number = db.Column(db.String(50))
+
+    vendor_id = db.Column(db.Integer)
+
+    quotation_id = db.Column(db.Integer)
+
+    amount = db.Column(db.Float)
+
+    status = db.Column(db.String(50))

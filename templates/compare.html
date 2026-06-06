@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quotation Comparison</title>
+</head>
+<body>
+     <nav><div>
+    <a href="/dashboard">Dashboard</a> |
+    <a href="/vendors">Vendors</a> |
+    <a href="/rfqs">RFQs</a> |
+    <a href="/quotations">Quotations</a> |
+    <a href="/approvals">Approvals</a>
+</div>
+
+<hr></nav>
+
+<h1>Quotation Comparison</h1>
+
+<table border="1">
+
+<tr>
+    <th>Vendor ID</th>
+    <th>Price</th>
+    <th>Delivery Days</th>
+    <th>Status</th>
+</tr>
+
+{% for q in quotations %}
+
+<tr>
+
+<td>{{ vendor_map[q.vendor_id] }}</td>
+
+<td>
+
+{% if q.price == lowest_price %}
+
+<b>
+₹ {{ q.price }}
+⭐ Lowest Price
+</b>
+
+{% else %}
+
+₹ {{ q.price }}
+
+{% endif %}
+
+</td>
+
+<td>{{ q.delivery_days }}</td>
+
+<td>{{ q.status }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+<h2>
+Recommended Vendor:
+{{ vendor_map[recommended.vendor_id] }}
+</h2>
+
+<p>
+Reason: Lowest Price
+</p>
+</body>
+</html>

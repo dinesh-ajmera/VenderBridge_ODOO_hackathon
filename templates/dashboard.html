@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dashboard</title>
-</head>
-<body>
+ <nav><div>
+    <a href="/dashboard">Dashboard</a> |
+    <a href="/vendors">Vendors</a> |
+    <a href="/rfqs">RFQs</a> |
+    <a href="/quotations">Quotations</a> |
+    <a href="/approvals">Approvals</a>
+</div>
 
-<h1>Welcome to VendorBridge Dashboard</h1>
+<hr></nav>
 
-<p>You are successfully logged in.</p>
-
-</body>
-</html>
+<div style="border:1px solid black;padding:20px;width:200px;">
+    <h3>Total Vendors</h3>
+    <h1>{{ total_vendors }}</h1>
+</div>

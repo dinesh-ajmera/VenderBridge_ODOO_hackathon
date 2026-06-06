@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RFQs</title>
+</head>
+<body>
+ <nav><div>
+    <a href="/dashboard">Dashboard</a> |
+    <a href="/vendors">Vendors</a> |
+    <a href="/rfqs">RFQs</a> |
+    <a href="/quotations">Quotations</a> |
+    <a href="/approvals">Approvals</a>
+</div>
+
+<hr></nav>
+<h1>RFQ List</h1>
+
+<table border="1">
+
+<tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Quantity</th>
+    <th>Deadline</th>
+    <th>Status</th>
+</tr>
+
+{% for rfq in rfqs %}
+
+<tr>
+    <td>{{ rfq.id }}</td>
+    <td>{{ rfq.title }}</td>
+    <td>{{ rfq.quantity }}</td>
+    <td>{{ rfq.deadline }}</td>
+    <td>{{ rfq.status }}</td>
+</tr>
+
+<a href="/submit_quotation/{{ rfq.id }}">
+    Submit Quote
+</a>
+
+<a href="/compare/{{ rfq.id }}">
+    Compare Quotes
+</a>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

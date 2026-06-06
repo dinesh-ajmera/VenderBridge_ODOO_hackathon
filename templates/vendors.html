@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vendors</title>
+</head>
+<body>
+ <nav><div>
+    <a href="/dashboard">Dashboard</a> |
+    <a href="/vendors">Vendors</a> |
+    <a href="/rfqs">RFQs</a> |
+    <a href="/quotations">Quotations</a> |
+    <a href="/approvals">Approvals</a>
+</div>
+
+<hr></nav>
+<h1>Vendor List</h1>
+
+<table border="1">
+
+    <tr>
+        <th>ID</th>
+        <th>Company</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>GST</th>
+        <th>Category</th>
+        <th>Status</th>
+    </tr>
+
+    {% for vendor in vendors %}
+
+    <tr>
+        <td>{{ vendor.id }}</td>
+        <td>{{ vendor.company_name }}</td>
+        <td>{{ vendor.email }}</td>
+        <td>{{ vendor.phone }}</td>
+        <td>{{ vendor.gst_number }}</td>
+        <td>{{ vendor.category }}</td>
+        <td>{{ vendor.status }}</td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
