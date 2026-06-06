@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request , redirect , session
 from models import db, User
 
 app = Flask(__name__)
@@ -50,6 +50,38 @@ def users():
     return result
 
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+
+    if request.method == 'POST':
+
+        email = request.form['email']
+        password = request.form['password']
+
+        user = User.query.filter_by(
+            email=email,
+            password=password
+        ).first()
+
+        if user:
+
+            session['user_id'] = user.id
+            session['role'] = user.role
+
+            return redirect('/dashboard')
+
+        return "Invalid Email or Password"
+
+    return render_template('login.html')
+
+
+@app.route('/dashboard')
+def dashboard():
+
+    if 'user_id' not in session:
+        return redirect('/login')
+
+    return render_template('dashboard.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
