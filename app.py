@@ -13,6 +13,11 @@ with app.app_context():
     db.create_all()
 
 
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('login')
+
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
 
@@ -65,9 +70,12 @@ def login():
         ).first()
 
         if user:
-
+            
             session['user_id'] = user.id
             session['role'] = user.role
+            if session.get('role')== "admin":
+                return redirect('/dashboard')
+        
 
             return redirect('/dashboard')
 
@@ -111,7 +119,7 @@ def add_vendor():
         db.session.add(vendor)
         db.session.commit()
 
-        return "Vendor Added Successfully"
+        return render_template('vendors.html')
 
     return render_template('add_vendor.html')
 
@@ -128,11 +136,13 @@ def vendors():
 
 @app.route('/create_rfq', methods=['GET', 'POST'])
 def create_rfq():
-
+    idcount = 1
     if request.method == 'POST':
 
         rfq = RFQ(
+
             title=request.form['title'],
+            id = idcount +1 ,
             description=request.form['description'],
             quantity=request.form['quantity'],
             deadline=datetime.strptime(
@@ -140,7 +150,7 @@ def create_rfq():
                 '%Y-%m-%d'
             ).date(),
             status='Open',
-            created_by=1
+            created_by=session.get('user_id')
         )
 
         db.session.add(rfq)
